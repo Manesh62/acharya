@@ -11,8 +11,8 @@ struct number{
 int options();
 void tb(struct number n);
 int bus(int);
-int micro();
-int bike();
+int micro(int);
+int bike(int);
 void showdetail();
 void Delete();
 
@@ -36,11 +36,11 @@ int main(){
 			break;
 		case 2:
 			system("cls");
-            //micro();
+            n.num=micro(n.num);
 			break;
 		case 3:
 		    system("cls");
-            //bike();
+            n.nub=bike(n.nub);
 			break;	
 		case 4:
 			system("cls");
@@ -93,4 +93,18 @@ int bus(int nobu)
 	printf("\n Successfully the data is entered\n");
 	nobu++;
 	return nobu;
+}
+
+int micro(int nom)
+{    
+	printf("\n Successfully the data is entered\n");
+	nom++;
+	return nom;
+}
+
+int bike(int nob)
+{    
+	printf("\n Successfully the data is entered\n");
+	nob++;
+	return nob;
 }
