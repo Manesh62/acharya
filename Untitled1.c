@@ -1,118 +1,96 @@
 // project on parking management system
+
 #include<stdio.h>// for including printf and scanf function
 #include<conio.h>// for using getch() and unformatted output
 #include<stdlib.h>
-struct number
-{
-	int nobu,nom,nob;
+
+struct number{
+	int nubu,num,nub;
 };
-int amount=0,count=0,nobu,nom,nob;
-void bus();
-void micro();
-void bike();
-void Delete();
+
+int options();
+void tb(struct number n);
+int bus(int);
+int micro();
+int bike();
 void showdetail();
-void main()
-{   
-   clrscr();
-   char option;
-   FILE  *fptr;
-   fptr=fopen("man.txt","r+b");
-   if(fptr==NULL)
-   {
-   	  fptr=fopen("man.txt","w+b");
-   	  if(fptr==NULL)
-   	  {
-   	  	printf("File cannot be created !!!!!!!!\n");
-   	  	exit(1);
-		 }
-	  }	
-	while(1)
+void Delete();
+
+int main(){
+
+    struct number n;
+    int a,sw;
+	n.nubu=0;
+	n.num=0;
+	n.nub=0;
+    top:
+    printf("\n\t\t\t******welcome to the Parking System******\n\n\n");
+    tb(n);
+	sw = options();
+	
+	switch(sw)
 	{
-		printf("\n ******welcome to the Parking System******");
-		options();
-		option= getch();
-		printf("%c \n",option);
-	
-		switch(option)
-		{
-			case 'a':
-				bus();
-				break;
-			case 'b':
-				micro();
-				break;
-			case 'c':
-			    bike();
-				break;	
-			case 'd':
-				showdetail();
-				break;
-			case 'e':
-			   Delete();
-			   break;	
-			case 'x':
-			  return 0;
-			  break;
-			 case 'r':
-			 system("cls");
-			 break; 
-			 default:
-			 printf("pls enter the required choice");
-			 break;	
-				
-		}
+		case 1:
+            system("cls");
+			n.nubu=bus(n.nubu);
+			break;
+		case 2:
+			system("cls");
+            //micro();
+			break;
+		case 3:
+		    system("cls");
+            //bike();
+			break;	
+		case 4:
+			system("cls");
+            //showdetail();
+			break;
+		case 5:
+		   system("cls");
+           //Delete();
+		   break;	
+		case 6:
+		    system("cls");
+            return 0;
+		    break;
+		 default:
+            system("cls");
+		    printf("pls enter the required choice");
+		    break;		
 	}
-	  
-	  
-	  
-	  
-	  
+
+    system("cls");
+    goto top;
+
+    return 0;
 }
-void options()
+
+int options()
 {
-	printf("\n Enter a for entering the data  of the bus ");
-	printf("\n Enter b for entering data of  the micro number");
-	printf("\n Enter c for entering the data of  the cycle");
-	printf("\n Enter d for showing the  status");
-	printf("\n Enter e for deleting data");
-	printf("\n Enter the x for exit");
-	printf("\n Enter the r for clear screen");
-	printf("\n\n");
+	int opt;
+    printf("\n [1] Enter Bus records ");
+	printf("\n [2] Enter Micro records");
+	printf("\n [3] Enter Bike records");
+	printf("\n [4] View Details");
+	printf("\n [5] Delete Data");
+	printf("\n [6] Exit");
+	printf("\n\n --> ");
+    scanf("%d",&opt);
+    return opt;
 }
-void bus()
+
+void tb(struct number n){
+    printf("\n\t\t\t [1] BUS");
+    printf("\t [2] MICRO");
+    printf("\t [3] BIKE\n");
+    printf("\t\t\t ----------------------------------------\n");
+    printf("\t\t\t     %d\t\t     %d\t\t     %d\n",n.nubu,n.num,n.nub);
+}
+
+int bus(int nobu)
 {    
-    printf("\n Successfully the data is entered\n");
+	printf("\n Successfully the data is entered\n");
 	nobu++;
-	amount=amount+100;
-	count++;
-	
-}
-void micro()
-{   printf("\n Successfully the data is entered\n");
-	nom++;
-	amount=amount+750;
-	count++;
-}
-void bike()
-{   printf("\n Successfully the data is entered\n");
-	nob++;
-	amount=amount+500;
-	count++;
-}
-void showdetail()
-{
-	printf("Number of bus is %d\n",nobu);
-	printf("Number of micro is %d\n",nom);
-	printf("Number of bike is %d\n",nob);
-	printf("total number of vehicles is %d\n",count);
-	printf("Total amount gain is %d\n",amount);
-}
-void Delete()
-{
-	nobu=0;
-	nom=0;
-	nob=0;
-	amount=0;
-	count=0;
+	return nobu;
 }
